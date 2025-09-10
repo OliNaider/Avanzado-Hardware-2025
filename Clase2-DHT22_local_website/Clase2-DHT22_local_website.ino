@@ -4,13 +4,13 @@
 
 // Configuración del DHT
 #define DHTPIN 4  // Pin donde está conectado el sensor
-#define DHTTYPE DHT22  // Cambia a DHT11 si estás usando un DHT11
+#define DHTTYPE DHT11  // Cambia a DHT11 si estás usando un DHT11
 
 DHT dht(DHTPIN, DHTTYPE);
 
 // Configuración WiFi
-const char* ssid = "IoTB";
-const char* password = "inventaronelVAR";
+const char* ssid = "moto g(7) plus 5062";
+const char* password = "blabla123";
 
 // Crear un objeto de servidor web en el puerto 80
 WebServer server(80);
