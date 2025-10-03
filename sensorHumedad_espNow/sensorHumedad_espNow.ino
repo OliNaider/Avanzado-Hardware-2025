@@ -84,6 +84,8 @@ void loop() {
 
   if (datosRecibidos == "Botón presionado") {
     digitalWrite(pinRele, HIGH);
+    delay(3000);
+    digitalWrite(pinRele, LOW);
     Serial.println("Rele encendido por botón");
     datosRecibidos = ""; // Limpio para evitar repetición
   }

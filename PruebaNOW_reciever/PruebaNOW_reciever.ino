@@ -62,7 +62,7 @@ void loop() {
     mensajeBotonPresionado();
   }
 
-
+  delay(500);
  
 }
 
