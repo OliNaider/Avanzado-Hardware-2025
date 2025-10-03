@@ -13,7 +13,7 @@ const char* ssid = "IoTB";
 const char* password = "inventaronelVAR";
 
 // Dirección MAC del receptor (ESP32-CAM)
-uint8_t broadcastAddress[] = {0xA0, 0xA3, 0xB3, 0x28, 0xA6, 0xD8};
+uint8_t broadcastAddress[] = {0x08, 0xD1, 0xF9, 0xE7, 0x60, 0xBC};
 
 // Estructura del mensaje
 typedef struct estructura {
@@ -36,10 +36,22 @@ void setup() {
 }
 
 void loop() {
-  float h = dht.readHumidity();
-  float t = dht.readTemperature();
 
-  mensaje1(h,t);
+  if(Serial.available() > 0) {
+    String esto = Serial.readString()
+  }
+  
+  if(esto == sensor) {
+    float h = dht.readHumidity();
+    float t = dht.readTemperature();
+    Serial.println(h);
+    Serial.println(t);
+
+    mensaje1(h,t);
+  }
+  
+
+  
 }
 
 
@@ -52,7 +64,6 @@ void registrarPeer() {
 }
 
 void mensaje1(float h, float t) {
- 
   snprintf(myData.msg, sizeof(myData.msg), "H:%.1f T:%.1f", h, t);
   esp_err_t result = esp_now_send(broadcastAddress, (uint8_t *) &myData, sizeof(myData));
 }
